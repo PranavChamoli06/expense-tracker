@@ -3,13 +3,21 @@ import readData from "../utils/readData.js";
 import writeData from "../utils/writeData.js";
 
 export const getExpenses = async (req, res) => {
-  const expenses = await readData();
+  try {
+    const expenses = await readData();
 
-  expenses.sort(
-    (a, b) => new Date(b.date) - new Date(a.date)
-  );
+    expenses.sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
+    );
 
-  res.json(expenses);
+    res.json(expenses);
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      message: error.message,
+    });
+  }
 };
 
 export const addExpense = async (req, res) => {
