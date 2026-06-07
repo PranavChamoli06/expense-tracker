@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "id": "8c9a41cb-da4d-49f4-a7b2-a8d9dab75e98",
+    "amount": "1500",
+    "category": "Food",
+    "date": "2026-06-06",
+    "note": "Tatto Party"
+  },
+  {
+    "id": "c1e37874-3dbc-44b9-9434-f973be17b93f",
+    "amount": "500",
+    "category": "Bills",
+    "date": "2026-06-07",
+    "note": "Shopping"
+  },
+  {
+    "id": "17a3edf2-b3cb-4e09-a677-614c508ddfd4",
+    "amount": "400",
+    "category": "Entertainment",
+    "date": "2026-06-13",
+    "note": "Movie"
+  }
+]
