@@ -248,4 +248,4 @@ This project demonstrates:
 Pranav Chamoli
 
 GitHub:
-[PranavChamoli06 GitHub](https://github.com/PranavChamoli06?utm_source=chatgpt.com)
+[PranavChamoli06 GitHub](https://github.com/PranavChamoli06)
