@@ -27,14 +27,13 @@ const Dashboard = () => {
 
   const [expenses, setExpenses] = useState([]);
 
-  const [selectedExpense, setSelectedExpense] =
-    useState(null);
+  const [selectedExpense, setSelectedExpense] = useState(null);
 
-  const [isModalOpen, setIsModalOpen] =
-    useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const [loading, setLoading] =
-    useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const [error, setError] = useState("");
 
   const fetchExpenses = async () => {
 
@@ -45,10 +44,12 @@ const Dashboard = () => {
       const res = await getExpenses();
 
       setExpenses(res.data);
+      setError("");
 
     } catch (error) {
 
       console.log(error);
+      setError("Failed to fetch expenses");
 
     } finally {
 
@@ -80,19 +81,24 @@ const Dashboard = () => {
 
   const handleDeleteExpense = async (id) => {
 
-    try {
+  const confirmDelete = window.confirm(
+    "Are you sure you want to delete this expense?"
+  );
 
-      await deleteExpense(id);
+  if (!confirmDelete) return;
 
-      fetchExpenses();
+  try {
+    await deleteExpense(id);
 
-    } catch (error) {
+    fetchExpenses();
 
-      console.log(error);
+  } catch (error) {
 
-    }
+    console.log(error);
 
-  };
+    setError("Failed to delete expense");
+  }
+};
 
   const handleEditExpense = (expense) => {
 
@@ -177,6 +183,12 @@ const Dashboard = () => {
       </aside>
 
       <main className="main-content">
+
+        {error && (
+          <div className="error-message">
+            {error}
+          </div>
+        )}
 
         <Outlet
           context={{

@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar";
 import SummaryCards from "../components/SummaryCards";
 import ExpenseChart from "../components/ExpenseChart";
 import FilterBar from "../components/FilterBar";
+import ExportCSV from "../components/ExportCSV";
 
 import calculateSummary from "../utils/calculateSummary";
 import filterExpenses from "../utils/filterExpenses";
@@ -26,10 +27,18 @@ const Overview = () => {
     <>
       <Navbar />
 
-      <FilterBar
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-      />
+      <div className="top-actions">
+
+         <FilterBar
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+        />
+
+         <div className="dashboard-actions">
+            <ExportCSV expenses={filteredExpenses} />
+        </div>
+
+      </div>
 
       <SummaryCards
         expenses={filteredExpenses}

@@ -4,6 +4,11 @@ import writeData from "../utils/writeData.js";
 
 export const getExpenses = async (req, res) => {
   const expenses = await readData();
+
+  expenses.sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
+  );
+
   res.json(expenses);
 };
 
