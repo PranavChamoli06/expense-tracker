@@ -24,20 +24,38 @@ import EditExpenseModal from "../components/EditExpenseModal";
 import { updateExpense } from "../services/expenseService";
 
 const Dashboard = () => {
+
   const [expenses, setExpenses] = useState([]);
+
   const [selectedExpense, setSelectedExpense] =
     useState(null);
 
   const [isModalOpen, setIsModalOpen] =
     useState(false);
 
+  const [loading, setLoading] =
+    useState(false);
+
   const fetchExpenses = async () => {
+
     try {
+
+      setLoading(true);
+
       const res = await getExpenses();
+
       setExpenses(res.data);
+
     } catch (error) {
+
       console.log(error);
+
+    } finally {
+
+      setLoading(false);
+
     }
+
   };
 
   useEffect(() => {
@@ -45,21 +63,35 @@ const Dashboard = () => {
   }, []);
 
   const handleAddExpense = async (data) => {
+
     try {
+
       await addExpense(data);
+
       fetchExpenses();
+
     } catch (error) {
+
       console.log(error);
+
     }
+
   };
 
   const handleDeleteExpense = async (id) => {
+
     try {
+
       await deleteExpense(id);
+
       fetchExpenses();
+
     } catch (error) {
+
       console.log(error);
+
     }
+
   };
 
   const handleEditExpense = (expense) => {
@@ -67,6 +99,7 @@ const Dashboard = () => {
     setSelectedExpense(expense);
 
     setIsModalOpen(true);
+
   };
 
   const handleUpdateExpense = async (
@@ -90,17 +123,23 @@ const Dashboard = () => {
 
   };
 
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
+
   return (
     <div className="app-layout">
 
       <aside className="sidebar">
 
         <div className="sidebar-logo">
+
           <div className="logo-icon">
             <FaWallet />
           </div>
 
           <h2>Expense Tracker</h2>
+
         </div>
 
         <ul>
@@ -148,15 +187,15 @@ const Dashboard = () => {
           }}
         />
 
-      {isModalOpen && (
+        {isModalOpen && (
 
           <EditExpenseModal
-          expense={selectedExpense}
-          onClose={() => setIsModalOpen(false)}
-          onUpdate={handleUpdateExpense}
-        />
+            expense={selectedExpense}
+            onClose={() => setIsModalOpen(false)}
+            onUpdate={handleUpdateExpense}
+          />
 
-      )}
+        )}
 
       </main>
 

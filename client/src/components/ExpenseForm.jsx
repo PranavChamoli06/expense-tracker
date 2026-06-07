@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 const ExpenseForm = ({ onAddExpense }) => {
+
   const [formData, setFormData] = useState({
     amount: "",
     category: "",
@@ -9,14 +10,48 @@ const ExpenseForm = ({ onAddExpense }) => {
   });
 
   const handleChange = (e) => {
+
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
+
   };
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
+
+    if (
+      !formData.amount ||
+      Number(formData.amount) <= 0
+    ) {
+
+      alert("Amount must be greater than 0");
+
+      return;
+
+    }
+
+    if (!formData.category) {
+
+      alert("Category is required");
+
+      return;
+
+    }
+
+    const selectedDate = new Date(formData.date);
+
+    const today = new Date();
+
+    if (selectedDate > today) {
+
+      alert("Future dates are not allowed");
+
+      return;
+
+    }
 
     onAddExpense(formData);
 
@@ -26,10 +61,12 @@ const ExpenseForm = ({ onAddExpense }) => {
       date: "",
       note: "",
     });
+
   };
 
   return (
     <form onSubmit={handleSubmit}>
+
       <input
         type="number"
         name="amount"
@@ -43,12 +80,31 @@ const ExpenseForm = ({ onAddExpense }) => {
         value={formData.category}
         onChange={handleChange}
       >
-        <option value="">Select Category</option>
-        <option value="Food">Food</option>
-        <option value="Transport">Transport</option>
-        <option value="Bills">Bills</option>
-        <option value="Entertainment">Entertainment</option>
-        <option value="Other">Other</option>
+
+        <option value="">
+          Select Category
+        </option>
+
+        <option value="Food">
+          Food
+        </option>
+
+        <option value="Transport">
+          Transport
+        </option>
+
+        <option value="Bills">
+          Bills
+        </option>
+
+        <option value="Entertainment">
+          Entertainment
+        </option>
+
+        <option value="Other">
+          Other
+        </option>
+
       </select>
 
       <input
@@ -66,7 +122,10 @@ const ExpenseForm = ({ onAddExpense }) => {
         onChange={handleChange}
       />
 
-      <button type="submit">Add Expense</button>
+      <button type="submit">
+        Add Expense
+      </button>
+
     </form>
   );
 };

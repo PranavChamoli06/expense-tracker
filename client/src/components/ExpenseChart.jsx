@@ -3,121 +3,83 @@ import {
   Pie,
   Cell,
   Tooltip,
-  ResponsiveContainer,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
 
 const COLORS = [
-  "#ff6b6b",
-  "#4ecdc4",
-  "#ffe66d",
-  "#5f27cd",
-  "#54a0ff",
+  "#8b5cf6",
+  "#06b6d4",
+  "#10b981",
+  "#f59e0b",
+  "#ef4444",
 ];
 
 const ExpenseChart = ({ expenses }) => {
 
-  const categoryData = Object.values(
-    expenses.reduce((acc, expense) => {
+  const categoryData = {};
 
-      const category = expense.category;
+  expenses.forEach((expense) => {
 
-      if (!acc[category]) {
+    const category = expense.category;
 
-        acc[category] = {
-          name: category,
-          value: 0,
-        };
+    if (!categoryData[category]) {
+      categoryData[category] = 0;
+    }
 
-      }
+    categoryData[category] += Number(expense.amount);
 
-      acc[category].value += Number(
-        expense.amount
-      );
+  });
 
-      return acc;
-
-    }, {})
+  const chartData = Object.entries(categoryData).map(
+    ([name, value]) => ({
+      name,
+      value,
+    })
   );
 
   return (
-
-    <div className="chart-card">
+    <div className="chart-container">
 
       <h2>Expense Analytics</h2>
 
-      <div className="chart-wrapper">
+      <ResponsiveContainer
+        width="100%"
+        height={350}
+      >
 
-        <ResponsiveContainer
-          width="100%"
-          height={400}
-        >
+        <PieChart>
 
-          <PieChart>
+          <Pie
+            data={chartData}
+            dataKey="value"
+            nameKey="name"
+            outerRadius={120}
+            label
+          >
 
-            <Pie
-              data={categoryData}
-              cx="50%"
-              cy="50%"
-              innerRadius={90}
-              outerRadius={120}
-              paddingAngle={4}
-              dataKey="value"
-              label={({ name, percent }) =>
-                `${name} ${(percent * 100).toFixed(0)}%`
-              }
-              labelLine={false}
-            >
+            {chartData.map((entry, index) => (
 
-              {categoryData.map(
-                (entry, index) => (
+              <Cell
+                key={index}
+                fill={
+                  COLORS[
+                    index % COLORS.length
+                  ]
+                }
+              />
 
-                  <Cell
-                    key={index}
-                    fill={
-                      COLORS[
-                        index % COLORS.length
-                      ]
-                    }
-                  />
+            ))}
 
-                )
-              )}
+          </Pie>
 
-            </Pie>
+          <Tooltip />
 
-            <Tooltip
-              contentStyle={{
-                background:
-                  "rgba(255,255,255,0.15)",
+          <Legend />
 
-                border:
-                  "1px solid rgba(255,255,255,0.2)",
+        </PieChart>
 
-                borderRadius: "12px",
-
-                color: "#fff",
-
-                backdropFilter: "blur(12px)",
-              }}
-            />
-
-            <Legend
-                layout="vertical"
-                verticalAlign="middle"
-                align="right"
-                wrapperStyle={{
-                color: "#fff",
-                fontSize: "16px",
-                paddingLeft: "20px",
-              }}
-            />
-
-          </PieChart>
-
-        </ResponsiveContainer>
-
-      </div>
+      </ResponsiveContainer>
 
     </div>
   );

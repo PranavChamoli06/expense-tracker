@@ -1,14 +1,6 @@
-const SummaryCards = ({ expenses }) => {
+import formatCurrency from "../utils/formatCurrency";
 
-  const totalExpenses = expenses.reduce(
-    (acc, item) => acc + Number(item.amount),
-    0
-  );
-
-  const highestExpense =
-    expenses.length > 0
-      ? Math.max(...expenses.map((e) => Number(e.amount)))
-      : 0;
+const SummaryCards = ({ expenses, summary }) => {
 
   const latestCategory =
     expenses.length > 0
@@ -20,7 +12,9 @@ const SummaryCards = ({ expenses }) => {
 
       <div className="summary-card">
         <h3>Total Expenses</h3>
-        <p>₹{totalExpenses}</p>
+        <p>
+          {formatCurrency(summary.totalSpent)}
+        </p>
       </div>
 
       <div className="summary-card">
@@ -30,7 +24,9 @@ const SummaryCards = ({ expenses }) => {
 
       <div className="summary-card">
         <h3>Highest Expense</h3>
-        <p>₹{highestExpense}</p>
+        <p>
+          {formatCurrency(summary.highestExpense)}
+        </p>
       </div>
 
       <div className="summary-card">
