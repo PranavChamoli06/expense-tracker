@@ -2,9 +2,9 @@
 
 A modern full-stack Expense Tracker Dashboard built using React, Vite, Node.js, and Express.js.
 
-This application helps users manage daily expenses with a responsive dashboard UI, interactive analytics, category filtering, validation system, and complete CRUD operations.
+This application helps users manage daily expenses through a professional dashboard interface featuring interactive analytics, responsive design, CSV export functionality, category filtering, form validation, and complete CRUD operations.
 
-The project follows a modular full-stack architecture with separate frontend and backend layers.
+The project follows a modular full-stack architecture with separate frontend and backend layers for scalability and maintainability.
 
 ---
 
@@ -15,53 +15,61 @@ The project follows a modular full-stack architecture with separate frontend and
 * Add new expenses
 * View all expenses
 * Edit existing expenses
-* Delete expenses
+* Delete expenses with confirmation
 * Dynamic expense updates
+* Latest expenses displayed first
 
 ---
 
-## Dashboard Features
+# Dashboard Features
 
 * Modern glassmorphism dashboard UI
-* Expandable sidebar navigation
-* Responsive mobile-friendly layout
+* Expandable responsive sidebar navigation
+* Fully responsive mobile-friendly layout
 * Interactive analytics dashboard
 * Dynamic summary cards
-* Category-based filtering
+* Category-based expense filtering
+* CSV export functionality
 * Loading state handling
 * Empty state handling
-* Form validation system
+* Error handling system
+* Professional table layout
+* Modal-based expense editing
 
 ---
 
-## Analytics
+# Analytics Features
 
 * Expense category distribution
 * Interactive pie chart visualization
+* Real-time analytics updates
 * Total expense calculation
 * Highest expense tracking
-* Category-wise analytics
-* Real-time dashboard updates
+* Total transaction tracking
+* Latest category tracking
+* Category-wise expense analytics
 
 ---
 
-## Validation Features
+# Validation Features
 
 * Prevent negative expenses
 * Prevent zero-value expenses
 * Prevent future dates
 * Required category validation
+* Safe delete confirmation workflow
 
 ---
 
-## Backend Features
+# Backend Features
 
 * REST API architecture
 * Express.js backend server
 * Modular controller structure
 * Route-based API handling
 * JSON file persistence
-* CRUD API implementation
+* Complete CRUD API implementation
+* Newest-first expense sorting
 
 ---
 
@@ -73,6 +81,7 @@ The project follows a modular full-stack architecture with separate frontend and
 * Vite
 * React Router DOM
 * Recharts
+* React CSV
 * React Icons
 * CSS3
 
@@ -104,6 +113,7 @@ expense-tracker/
 │   │   ├── pages/
 │   │   ├── services/
 │   │   ├── utils/
+│   │   ├── styles/
 │   │   ├── assets/
 │   │   └── main.jsx
 │   │
@@ -205,12 +215,14 @@ DELETE /api/expenses/:id
 
 * Purple gradient dashboard UI
 * Glassmorphism card design
+* Responsive dashboard architecture
+* Expandable animated sidebar
 * Interactive hover effects
-* Responsive dashboard layout
-* Expandable sidebar navigation
-* Dynamic analytics visualization
+* Responsive analytics visualization
 * Modern modal editing system
-* Clean table design
+* Responsive expense tables
+* Professional empty states
+* Mobile-friendly layout system
 
 ---
 
@@ -221,10 +233,11 @@ DELETE /api/expenses/:id
 * User accounts
 * Monthly analytics reports
 * Expense search functionality
-* PDF/CSV export system
+* PDF export support
 * Dark/Light mode toggle
 * Budget tracking system
 * Expense history insights
+* Cloud database integration
 
 ---
 
@@ -233,13 +246,16 @@ DELETE /api/expenses/:id
 This project demonstrates:
 
 * Full-stack application architecture
-* REST API integration
+* REST API development
 * React state management
 * CRUD operations
 * Dashboard UI development
 * Responsive frontend design
 * Component-based architecture
+* Analytics dashboard implementation
 * Data visualization using charts
+* Frontend-backend integration
+* Professional UI/UX practices
 
 ---
 
@@ -248,4 +264,4 @@ This project demonstrates:
 Pranav Chamoli
 
 GitHub:
-[PranavChamoli06 GitHub](https://github.com/PranavChamoli06)
+https://github.com/PranavChamoli06
