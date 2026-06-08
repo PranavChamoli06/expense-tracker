@@ -4,9 +4,60 @@ A modern full-stack Expense Tracker Dashboard built using React, Vite, Node.js, 
 
 This application helps users manage daily expenses through a professional dashboard interface featuring interactive analytics, responsive design, CSV export functionality, category filtering, form validation, and complete CRUD operations.
 
-The project follows a modular full-stack architecture with separate frontend and backend layers for scalability and maintainability.
+The project follows a modular full-stack architecture with separate frontend and backend layers for scalability, maintainability, and production deployment readiness.
 
 ---
+
+# Live Deployment
+
+## Frontend Deployment
+
+Deployed on Vercel
+
+Frontend URL:
+
+```bash
+https://expense-tracker-omega-indol-39.vercel.app/
+```
+
+---
+
+## Backend Deployment
+
+Deployed on Railway
+
+Backend API URL:
+
+```bash
+https://expense-tracker-production-05a4.up.railway.app/api/expenses
+```
+
+---
+
+# Screenshots
+
+## Dashboard Overview
+
+![Dashboard Overview](./screenshots/dashboard.png)
+
+---
+
+## Expense Analytics
+
+![Expense Analytics](./screenshots/analytics.png)
+
+---
+
+## Expense Table
+
+![Expense Table](./screenshots/expenses.png)
+
+---
+
+## Add Expense Modal
+
+![Add Expense Modal](./screenshots/add-expenses.png)
+
 
 # Features
 
@@ -70,6 +121,7 @@ The project follows a modular full-stack architecture with separate frontend and
 * JSON file persistence
 * Complete CRUD API implementation
 * Newest-first expense sorting
+* Production deployment support
 
 ---
 
@@ -94,9 +146,11 @@ The project follows a modular full-stack architecture with separate frontend and
 
 ---
 
-## Tools & Platforms
+## Deployment & Tools
 
 * Git & GitHub
+* Railway
+* Vercel
 * Postman
 * VS Code
 
@@ -177,6 +231,16 @@ http://localhost:5000
 
 ---
 
+# Environment Variables
+
+## Frontend (.env)
+
+```env
+VITE_API_URL=https://expense-tracker-production-05a4.up.railway.app/api/expenses
+```
+
+---
+
 # API Endpoints
 
 ## Get All Expenses
@@ -207,6 +271,18 @@ PUT /api/expenses/:id
 
 ```http
 DELETE /api/expenses/:id
+```
+
+---
+
+# Deployment Architecture
+
+```bash
+Frontend (Vercel)
+        ↓
+Backend API (Railway)
+        ↓
+JSON File Storage
 ```
 
 ---
@@ -255,6 +331,8 @@ This project demonstrates:
 * Analytics dashboard implementation
 * Data visualization using charts
 * Frontend-backend integration
+* Production deployment workflow
+* Environment variable management
 * Professional UI/UX practices
 
 ---
@@ -264,4 +342,7 @@ This project demonstrates:
 Pranav Chamoli
 
 GitHub:
+
+```bash
 https://github.com/PranavChamoli06
+```
