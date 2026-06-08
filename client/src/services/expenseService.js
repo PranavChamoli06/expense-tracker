@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api/expenses",
+  baseURL: "https://expense-tracker-production-05a4.up.railway.app/api/expenses",
 });
 
 export const getExpenses = () => API.get("/");
