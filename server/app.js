@@ -11,14 +11,6 @@ app.get("/", (req, res) => {
   res.send("Expense Tracker API Running");
 });
 
-//app.use("/api/expenses", expenseRoutes);
-
-app.get("/api/expenses", (req, res) => {
-  res.json([
-    {
-      test: "API working"
-    }
-  ]);
-});
+app.use("/api/expenses", expenseRoutes);
 
 export default app;
